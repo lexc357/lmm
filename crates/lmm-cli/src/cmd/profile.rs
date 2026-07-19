@@ -35,7 +35,7 @@ pub fn profile(ctx: &Context, out: Out, game: Option<&str>, cmd: ProfileCmd) -> 
             let p = profile::switch(&ctx.db, inst.id, &name)?;
             out.emit(&p, || {
                 println!(
-                    "active profile: '{}' — run 'lmm deploy' to apply its mod set",
+                    "active profile: '{}' — run 'deploy' to apply its mod set",
                     p.name
                 );
             })

@@ -324,7 +324,7 @@ fn pending_deployment_blocks_and_rollback_recovers() {
 
     let err = deploy::plan(&fx.ctx, &fx.inst, PlanKind::Deploy).unwrap_err();
     assert!(matches!(err, Error::Blocked(_)), "{err}");
-    assert!(err.to_string().contains("lmm rollback"), "{err}");
+    assert!(err.to_string().contains("'rollback'"), "{err}");
 
     let rolled = deploy::rollback_running(&fx.ctx, &fx.inst).unwrap();
     assert!(rolled.is_some());

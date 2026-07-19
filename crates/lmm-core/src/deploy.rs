@@ -722,7 +722,7 @@ pub fn execute(ctx: &Context, inst: &Installation, mut plan: Plan, force: bool) 
             ))),
             Err(re) => Err(Error::Deploy(format!(
                 "{} failed ({e}) and rollback also failed ({re}); \
-                 the deployment is left open — run 'lmm rollback'",
+                 the deployment is left open — run 'rollback'",
                 plan.kind.as_str()
             ))),
         },
@@ -789,7 +789,7 @@ fn run_ops(
                         let cur = sha256_file(&target)?;
                         if cur != pre {
                             return Err(Error::Deploy(format!(
-                                "{}: modified outside lmm (re-run 'lmm deploy --dry-run')",
+                                "{}: modified outside lmm (re-run 'deploy --dry-run')",
                                 op.rel
                             )));
                         }
@@ -813,7 +813,7 @@ fn run_ops(
                         let cur = sha256_file(&target)?;
                         if op.pre_sha256.as_deref() != Some(cur.as_str()) {
                             return Err(Error::Deploy(format!(
-                                "{}: modified outside lmm (re-run 'lmm deploy --dry-run')",
+                                "{}: modified outside lmm (re-run 'deploy --dry-run')",
                                 op.rel
                             )));
                         }
@@ -967,7 +967,7 @@ pub(crate) fn ensure_no_running(db: &Db, inst_id: i64) -> Result<()> {
     if let Some(d) = find_running(db, inst_id)? {
         return Err(Error::Blocked(format!(
             "an interrupted {} (id {}) is pending for this installation; \
-             run 'lmm rollback' to recover",
+             run 'rollback' to recover",
             d.kind, d.id
         )));
     }

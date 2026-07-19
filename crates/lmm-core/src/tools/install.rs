@@ -156,7 +156,7 @@ pub fn install(
         if tool.target != Target::Standalone && deployed_owner(&ctx.db, inst.id, &f.rel.key())? {
             return Err(Error::Blocked(format!(
                 "{} is currently deployed by a mod; this tool overlaps installed mods — \
-                 install it as a mod instead ('lmm install')",
+                 install it as a mod instead ('install')",
                 f.rel
             )));
         }

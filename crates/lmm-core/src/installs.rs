@@ -128,11 +128,11 @@ pub fn select(db: &Db, selector: Option<&str>) -> Result<Installation> {
     let all = list(db)?;
     match all.len() {
         0 => Err(Error::Invalid(
-            "no game installations registered; run 'lmm scan' then 'lmm game add'".into(),
+            "no game installations registered; run 'scan' then 'game add'".into(),
         )),
         1 => Ok(all.into_iter().next().expect("len checked")),
         n => Err(Error::Ambiguous(format!(
-            "{n} installations registered; pass --game <id|slug> or set a default with 'lmm game use'"
+            "{n} installations registered; pass --game <id|slug> or set a default with 'game use'"
         ))),
     }
 }
@@ -175,7 +175,7 @@ pub fn remove(db: &Db, id: i64) -> Result<()> {
     )?;
     if deployed > 0 {
         return Err(Error::Blocked(format!(
-            "{deployed} files are deployed for this installation; run 'lmm purge' first"
+            "{deployed} files are deployed for this installation; run 'purge' first"
         )));
     }
     // Same reasoning for managed tools: dropping the record would orphan
@@ -187,7 +187,7 @@ pub fn remove(db: &Db, id: i64) -> Result<()> {
     )?;
     if tools > 0 {
         return Err(Error::Blocked(format!(
-            "{tools} tool(s) are installed for this installation; run 'lmm tools remove' first"
+            "{tools} tool(s) are installed for this installation; run 'tools remove' first"
         )));
     }
     // Clear the self-referencing FK before cascading profile deletion.

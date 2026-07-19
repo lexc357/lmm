@@ -39,7 +39,7 @@ pub struct Args {
     pub db: Option<PathBuf>,
 
     /// Target installation (id, game slug, or label); defaults to the
-    /// installation set with 'lmm game use', or the only one registered
+    /// installation set with 'game use', or the only one registered
     #[arg(short, long, global = true, value_name = "INSTALL")]
     pub game: Option<String>,
 }
@@ -319,10 +319,10 @@ pub enum GameCmd {
     Add {
         /// Game root directory
         path: Option<PathBuf>,
-        /// Steam app id from 'lmm scan' (alternative to a path)
+        /// Steam app id from 'scan' (alternative to a path)
         #[arg(long, conflicts_with = "path")]
         app: Option<u32>,
-        /// Game type slug (see 'lmm scan'; use 'generic' for unknown games)
+        /// Game type slug (see 'scan'; use 'generic' for unknown games)
         #[arg(long)]
         slug: Option<String>,
         /// Human-friendly label to select this installation by

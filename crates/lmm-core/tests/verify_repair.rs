@@ -188,7 +188,7 @@ fn pending_deployment_is_reported_and_blocks_repair() {
     assert!(problems(&report).contains(&Problem::InterruptedDeployment));
 
     let err = verify::plan_repair(&fx.ctx, &fx.inst).unwrap_err();
-    assert!(err.to_string().contains("lmm rollback"), "{err}");
+    assert!(err.to_string().contains("'rollback'"), "{err}");
 }
 
 #[test]

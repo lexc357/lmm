@@ -46,7 +46,7 @@ pub fn scan(ctx: &Context, out: Out, all: bool) -> Result<()> {
         print_table(&["app", "game", "name", "proton", "added", "path"], &rows);
         if !all {
             println!(
-                "\n{} supported of {} Steam apps found; register one with 'lmm game add --app <app>'",
+                "\n{} supported of {} Steam apps found; register one with 'game add --app <app>'",
                 supported.len(),
                 apps.len()
             );
@@ -58,7 +58,7 @@ pub fn launch(ctx: &Context, out: Out, game: Option<&str>) -> Result<()> {
     let inst = installs::select(&ctx.db, game)?;
     if let Some(d) = lmm_core::deploy::find_running(&ctx.db, inst.id)? {
         bail!(
-            "an interrupted {} is pending; run 'lmm rollback' before launching",
+            "an interrupted {} is pending; run 'rollback' before launching",
             d.kind
         );
     }
@@ -183,7 +183,7 @@ fn list(ctx: &Context, out: Out) -> Result<()> {
     let default = ctx.db.setting("default_installation")?;
     out.emit(&insts, || {
         if insts.is_empty() {
-            println!("no installations registered; run 'lmm scan' then 'lmm game add'");
+            println!("no installations registered; run 'scan' then 'game add'");
             return;
         }
         let rows: Vec<Vec<String>> = insts
@@ -202,7 +202,7 @@ fn list(ctx: &Context, out: Out) -> Result<()> {
             .collect();
         print_table(&["id", "game", "label", "source", "path", "added"], &rows);
         if insts.len() > 1 && default.is_none() {
-            println!("\nhint: set a default with 'lmm game use <id>'");
+            println!("\nhint: set a default with 'game use <id>'");
         }
     })
 }

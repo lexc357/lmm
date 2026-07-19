@@ -63,7 +63,7 @@ fn report_installed(out: Out, installed: &mods::Installed) -> Result<()> {
         );
         if installed.layout_uncertain {
             println!(
-                "warning: archive layout was not recognized; check 'lmm deploy --dry-run' before deploying"
+                "warning: archive layout was not recognized; check 'deploy --dry-run' before deploying"
             );
         }
         println!("enable it with: lmm enable '{}'", installed.info.name);
@@ -78,7 +78,7 @@ pub fn list(ctx: &Context, out: Out, game: Option<&str>) -> Result<()> {
 
     out.emit(&list, || {
         if list.is_empty() {
-            println!("no mods installed; add one with 'lmm install <archive>'");
+            println!("no mods installed; add one with 'install <archive>'");
             return;
         }
         let rows: Vec<Vec<String>> = list
@@ -97,7 +97,7 @@ pub fn list(ctx: &Context, out: Out, game: Option<&str>) -> Result<()> {
         print_table(&["order", "id", "state", "name", "version", "files"], &rows);
         if !conflicts.is_empty() {
             println!(
-                "\n{} conflicting paths between enabled mods; see 'lmm conflicts'",
+                "\n{} conflicting paths between enabled mods; see 'conflicts'",
                 conflicts.len()
             );
         }
@@ -125,7 +125,7 @@ pub fn set_enabled(
         &serde_json::json!({ "mods": names, "enabled": enabled }),
         || {
             println!(
-                "{}: {} (apply with 'lmm deploy')",
+                "{}: {} (apply with 'deploy')",
                 if enabled { "enabled" } else { "disabled" },
                 names.join(", ")
             );
@@ -180,7 +180,7 @@ pub fn conflicts(ctx: &Context, out: Out, game: Option<&str>) -> Result<()> {
             }
         }
         println!(
-            "\n{} conflicting paths; later load order (higher number) wins — change with 'lmm order'",
+            "\n{} conflicting paths; later load order (higher number) wins — change with 'order'",
             conflicts.len()
         );
     })

@@ -11,6 +11,12 @@ Rather than copying existing Windows mod managers, LMM is built around how Linux
 
 That said, this project is still a work in progress. You'll probably run into a bug here and there, and not every feature is implemented yet. Right now, development is focused mostly on the games I personally play, so support for other games may be limited or missing. The long-term goal is to make LMM useful for as many games as possible, but it's not there yet.
 
+###
+TODOs
+-bug fixes.
+-more games and more features support.
+-GUI? Maybe if it will make sense and I find mature Rust GUI library which fits good into the project.
+
 
 
 ## Quick install

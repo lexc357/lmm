@@ -171,7 +171,7 @@ pub fn verify(ctx: &Context, out: Out, game: Option<&str>) -> Result<()> {
             })
             .collect();
         print_table(&["problem", "file", "mod", "detail"], &rows);
-        println!("\nrun 'lmm repair --dry-run' to see what can be fixed");
+        println!("\nrun 'repair --dry-run' to see what can be fixed");
     })?;
     if !report.is_clean() {
         bail!("{} problem(s) found", report.findings.len());

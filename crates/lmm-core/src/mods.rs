@@ -256,7 +256,7 @@ pub fn replace_fomod_install(
     )?;
     if deployed > 0 {
         return Err(Error::Blocked(format!(
-            "'{}' has {deployed} deployed files; disable it and run 'lmm deploy' (or 'lmm purge') first",
+            "'{}' has {deployed} deployed files; disable it and run 'deploy' (or 'purge') first",
             m.name
         )));
     }
@@ -450,7 +450,7 @@ pub fn uninstall(ctx: &Context, inst: &Installation, mod_id: i64) -> Result<()> 
     )?;
     if deployed > 0 {
         return Err(Error::Blocked(format!(
-            "'{}' has {deployed} deployed files; disable it and run 'lmm deploy' (or 'lmm purge') first",
+            "'{}' has {deployed} deployed files; disable it and run 'deploy' (or 'purge') first",
             m.name
         )));
     }

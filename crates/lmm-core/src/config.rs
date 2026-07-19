@@ -28,7 +28,7 @@ pub enum DeployMethod {
     /// Hard-link staged files into the game directory: instant and free of
     /// disk duplication, but only within one filesystem — files that cannot
     /// be linked are copied instead. Caveat: a game or tool that rewrites a
-    /// linked file in place also rewrites the staged copy ('lmm verify'
+    /// linked file in place also rewrites the staged copy ('verify'
     /// detects this as drift, but repair then needs the mod reinstalled).
     Hardlink,
 }

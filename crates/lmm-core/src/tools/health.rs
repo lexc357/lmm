@@ -76,7 +76,7 @@ pub fn run(ctx: &Context, inst: &Installation, game: &'static GameTools) -> Resu
                 CheckStatus::Fail,
                 "an interrupted deployment is pending",
             ),
-            "run 'lmm rollback' before anything else",
+            "run 'rollback' before anything else",
         ));
     } else {
         out.push(check(

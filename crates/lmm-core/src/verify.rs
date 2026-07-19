@@ -94,7 +94,7 @@ pub fn report(ctx: &Context, inst: &Installation) -> Result<Report> {
             problem: Problem::InterruptedDeployment,
             rel_path: String::new(),
             mod_name: None,
-            detail: Some(format!("{} (id {}); run 'lmm rollback'", d.kind, d.id)),
+            detail: Some(format!("{} (id {}); run 'rollback'", d.kind, d.id)),
             path_key: String::new(),
             mod_id: None,
             expect_sha256: None,
@@ -294,7 +294,7 @@ pub fn plan_repair(ctx: &Context, inst: &Installation) -> Result<RepairPlan> {
         .any(|f| f.problem == Problem::InterruptedDeployment)
     {
         return Err(Error::Blocked(
-            "an interrupted deployment is pending; run 'lmm rollback' first".into(),
+            "an interrupted deployment is pending; run 'rollback' first".into(),
         ));
     }
     if rep

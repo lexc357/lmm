@@ -63,9 +63,9 @@ pub fn status(ctx: &Context, out: Out, game: Option<&str>) -> Result<()> {
         println!("installations:  {}", st.installations);
         let Some(i) = &st.current else {
             if st.installations == 0 {
-                println!("\nno games registered; run 'lmm scan' to find Steam games");
+                println!("\nno games registered; run 'scan' to find Steam games");
             } else {
-                println!("\nmultiple installations; select one with --game or 'lmm game use'");
+                println!("\nmultiple installations; select one with --game or 'game use'");
             }
             return;
         };
@@ -103,7 +103,7 @@ pub fn status(ctx: &Context, out: Out, game: Option<&str>) -> Result<()> {
             None => println!("last run:       never deployed"),
         }
         if st.pending_deployment {
-            println!("\nwarning: an interrupted deployment is pending; run 'lmm rollback'");
+            println!("\nwarning: an interrupted deployment is pending; run 'rollback'");
         }
     })
 }
