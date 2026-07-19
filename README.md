@@ -1,22 +1,28 @@
 # lmm — Linux Mod Manager
 
-A Linux-native CLI/shell mod manager for games, built for Steam/Proton
-installations and Nexus Mods archives. First-class support for the Bethesda
-family (Skyrim SE/LE/VR, Oblivion, Morrowind, Fallout 3/NV/4, Starfield,
-Enderal SE), Stardew Valley, Cyberpunk 2077, Mount & Blade II: Bannerlord,
-and 7 Days to Die; any other game can be managed as `generic`.
 
-lmm is safe by construction: mods are staged outside the game directory,
-every deployment is journaled and can be rolled back, originals are backed up
-before they are overwritten, and lmm never deletes or overwrites a file whose
-content it cannot account for. `purge` always restores the exact pre-lmm
-state.
+## Why LMM?
 
----
+Modding on Linux is still more difficult than it needs to be. Most existing solutions involve running Windows mod managers through Wine or Proton, following long setup guides, or juggling several different tools just to get a game working.
+
+LMM is my attempt to make that easier. The idea is to have one native Linux application that handles everything—from installing mods and essential tools like SKSE, to load order, game configuration, deployment, and troubleshooting.
+
+Rather than copying existing Windows mod managers, LMM is built around how Linux users actually play games. It aims to be fast, reliable, and feel like a natural part of the Linux gaming experience instead of another workaround.
+
+That said, this project is still a work in progress. You'll probably run into a bug here and there, and not every feature is implemented yet. Right now, development is focused mostly on the games I personally play, so support for other games may be limited or missing. The long-term goal is to make LMM useful for as many games as possible, but it's not there yet.
+
+
 
 ## Quick install
 
-Requirements: Linux, a [Rust toolchain](https://rustup.rs) (edition 2024, so
+Grab an executable from /builds and copy it to /usr/local/bin. Also make sure that /usr/local/bin is in your $PATH.
+
+OR 
+
+Build from source
+
+
+Requiremens: Linux, a [Rust toolchain](https://rustup.rs) (edition 2024, so
 Rust 1.85+). Archive extraction (`.zip`, `.7z`) is built in — no external
 tools needed.
 
@@ -24,6 +30,7 @@ tools needed.
 git clone <repository-url> && cd lmm
 cargo install --path crates/lmm-cli
 ```
+
 
 Then get going in under a minute:
 
