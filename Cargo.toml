@@ -1,0 +1,17 @@
+[workspace]
+resolver = "3"
+members = ["crates/lmm-core", "crates/lmm-cli", "crates/lmm-nexus"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+
+[workspace.lints.clippy]
+dbg_macro = "warn"
+todo = "warn"
+unwrap_used = "warn"
+
+[profile.release]
+lto = "thin"
+strip = "symbols"
